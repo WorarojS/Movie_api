@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 class Badge extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class Badge extends Component {
     this.state = {};
   }
 
-  componentDidMount(e) {}
+  componentDidMount() {}
 
   render() {
     return (
@@ -16,16 +17,36 @@ class Badge extends Component {
         <Wrapper>
           <Ul>
             <Li l>
-              <Img src={this.props.cover} />
+              {" "}
+              <Img src={this.props.pic2} />{" "}
             </Li>
-            <Li r>
-              <Text> {this.props.title}</Text>
-              <Text>Genre: {this.props.genre}</Text>
-              <Text>Director: {this.props.director}</Text>
+            <Li>
               <Text>
-                Released: {this.props.released} | {this.props.runtime}
+                <Link
+                  to={{
+                    pathname: `/movies/${this.props.title}`,
+                    state: {
+                      title: `${this.props.title}`,
+                      name: `${this.props.name}`,
+                      popularity: `${this.props.popularity}`,
+                      vote_count: `${this.props.vote_count}`,
+                      vote_average: `${this.props.vote_average}`,
+                      Released: `${this.props.Released}`,
+                      pic: [`${this.props.pic1}`, `${this.props.pic2}`],
+                      overview: `${this.props.overview}`
+                    }
+                  }}
+                >
+                  {this.props.title}
+                  {this.props.name}
+                </Link>
               </Text>
-              <Text>Awards: {this.props.award}</Text>
+
+              <Text>popularity: {this.props.popularity}</Text>
+              <Text>vote_count: {this.props.vote_count}</Text>
+              <Text>vote_average: {this.props.vote_average}</Text>
+              <Text>Released: {this.props.released}</Text>
+              {/* <Text>Awards: {this.props.award}</Text> */}
             </Li>
           </Ul>
         </Wrapper>
@@ -35,8 +56,8 @@ class Badge extends Component {
 }
 
 const Wrapper = styled.div`
-  margin: 10px auto;
-  width: 750px;
+  margin: 20px auto;
+  width: 1000px;
   height: 300px;
   background: white;
   box-shadow: 5px 10px 18px #888888;
