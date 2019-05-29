@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import Badge from "./Badge";
-import Data from "./Data";
+import ApiKey from "../config/apiKey";
 
 class Peoples extends Component {
   constructor(props) {
     super(props);
-    this.apiKey = "";
 
     this.state = {
       data: [],
@@ -28,9 +27,9 @@ class Peoples extends Component {
     });
     const fetchItems = async () => {
       const dataSearch = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${
-          this.apiKey
-        }&query=${this.state.search}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${ApiKey}&query=${
+          this.state.search
+        }`
       );
 
       const items = await dataSearch.json();
@@ -53,7 +52,7 @@ class Peoples extends Component {
     });
     const fetchItems = async () => {
       const data = await fetch(
-        `https://api.themoviedb.org/3/trending/all/day?api_key=${this.apiKey}`
+        `https://api.themoviedb.org/3/trending/all/day?api_key=${ApiKey}`
       );
 
       const items = await data.json();

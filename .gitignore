@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-src/config/firebaseConfig.js
+src/config/apiKey.js
 /.pnp
 .pnp.js
 
